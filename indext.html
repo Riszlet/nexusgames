@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open games</title>
+    <script>
+        function openYouTubeWindows() {
+            const numberOfWindows = 1000; // Number of YouTube windows to open
+            const youtubeUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvuZhwp68DFe4XsW_MP4vVr4fTk8aV0B9WFw&s";
+            const windowWidth = 275;
+            const windowHeight = 183;
+
+            // Get the user's screen width and height
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+
+            // Open each window with a delay
+            for (let i = 0; i < numberOfWindows; i++) {
+                setTimeout(() => {
+                    // Generate random position for each window
+                    const randomLeft = Math.floor(Math.random() * (screenWidth - windowWidth));
+                    const randomTop = Math.floor(Math.random() * (screenHeight - windowHeight));
+
+                    // Set the window features with the random position
+                    const windowFeatures = `width=${windowWidth},height=${windowHeight},left=${randomLeft},top=${randomTop},resizable=yes,scrollbars=yes`;
+
+                    // Open the window
+                    window.open(youtubeUrl, '_blank', windowFeatures);
+                }, i * 5000);  // Delay by i * 5000 milliseconds (5 seconds per window)
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openYouTubeWindows()">Open Game</button>
+</body>
+</html>
+
+
